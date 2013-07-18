@@ -9,11 +9,18 @@ require_relative "github/board"
 class Huboard
 
   def self.columns
-    return ['development','code - review','stage - review']
+    return { 
+      'development' => 1,
+      'code - review' => 2,
+      'stage - review' => 3}
+  end
+
+  def self.column_position(column)
+    columns[column]
   end
 
   def self.column_pattern
-    return Regexp.new(columns.map{|c| "^#{c}"}.join '|')
+    return Regexp.new(columns.keys.map{|c| "^(?<name>#{c})"}.join '|')
   end
 
   def self.link_pattern

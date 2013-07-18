@@ -17,8 +17,8 @@ class Huboard
     def column_labels
       columns = labels.select{|l| Huboard.column_pattern.match l.name }.map do |l| 
         match = Huboard.column_pattern.match l.name
-          l[:index] = match[:id]
           l[:text] = match[:name]
+          l[:index] = Huboard.column_position( match[:name])
           l
       end
 
