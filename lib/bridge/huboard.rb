@@ -8,8 +8,12 @@ require_relative "github/board"
 
 class Huboard
 
+  def self.columns
+    return ['development','code - review','stage - review']
+  end
+
   def self.column_pattern
-    return /^development|^code - review|^stage - review/
+    return Regexp.new(columns.map{|c| "^#{c}"}.join '|')
   end
 
   def self.link_pattern
