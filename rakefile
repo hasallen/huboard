@@ -9,7 +9,7 @@ task :css do
   Dir.glob("**/s{a,c}ss") do |d|
     Dir.glob("#{d}/**/*.s[ac]ss").reject {|x| File.basename(x).start_with?"_"}.each do |sass|
       cssfile = "#{d}/../#{File.basename(sass,".*")}.min.css"
-      Sass.compile_file sass, cssfile, {style: :compressed }
+      Sass.compile_file sass, cssfile, {:style => :compressed}
     end
   end
 end
@@ -35,7 +35,7 @@ task :rjs do
 
     def modules
       @files.map do |f|
-        "#{File.dirname(f).gsub(/.*modules\//,"")}/#{File.basename(f,".js")}"
+        "\"#{File.dirname(f).gsub(/.*modules\//,"")}/#{File.basename(f,".js")}\""
       end
     end
 
@@ -48,7 +48,7 @@ task :rjs do
       erb_template = %{
                        var config =  {
                           name:"marker",
-                          include: <%= modules %>,
+                          include: [<%= modules.join ',' %>],
                           exclude: ["socket"],
                           baseUrl: "<%= baseUrl %>",
                           out : "<%= baseUrl %>/huboard.allmodules.js"
