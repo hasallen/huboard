@@ -9,12 +9,12 @@ gem 'ghee'
 gem 'rack-cache'
 gem 'activesupport'
 gem 'sass'
+  gem 'bourbon'
 
 group :development do
   gem 'watchr'
   gem 'shotgun'
   gem 'foreman'
-  gem 'bourbon'
   gem 'thin'
 end
 
