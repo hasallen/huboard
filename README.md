@@ -39,11 +39,11 @@ settings with labels
 
 To override add labels to your repository with the following patterm
 
->    @huboard: `yaml`
+>    @hasboard: `yaml`
 
 Example:
 
->    @huboard: :show_all: false
+>    @hasboard: :show_all: false
 
 See issue [#89](https://github.com/rauhryan/huboard/issues/89)
 

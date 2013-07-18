@@ -9,15 +9,18 @@ require_relative "github/board"
 class Huboard
 
   def self.column_pattern
-    return /^(?<id>\d+) *- *(?<name>.+)/ 
+    return /^development|^code - review|^stage - review/
   end
 
   def self.link_pattern
     return /^Link <=> (?<user_name>.*)\/(?<repo>.*)/
   end
 
-  def self.settings_pattern
-    return /^@huboard:(.*)/
+  def self.settings_pattern(inbody = false)
+    if inbody
+      return /@hasboard:(.*)/
+    end
+    return /^@hasboard:(.*)/
   end
 
   def self.all_patterns

@@ -100,7 +100,7 @@ class Huboard
 
       def embed_data(data = nil)
         if !data
-          r = /@huboard:(.*)/
+          r = Huboard.settings_pattern(true)
             match = r.match self.body
           return { } if match.nil?
 
@@ -112,9 +112,9 @@ class Huboard
         else
           _data = embed_data
           if _data.empty?
-            self.body = self.body.to_s.concat  "\r\n\r\n<!---\r\n@huboard:#{JSON.dump(data)}\r\n-->\r\n" 
+            self.body = self.body.to_s.concat  "\r\n\r\n<!---\r\n@hasboard:#{JSON.dump(data)}\r\n-->\r\n" 
           else
-            self.body = self.body.gsub /@huboard:.*/, "@huboard:#{JSON.dump(_data.merge(data))}"
+            self.body = self.body.gsub /@hasboard:.*/, "@hasboard:#{JSON.dump(_data.merge(data))}"
           end
         end
       end
@@ -154,7 +154,7 @@ class Huboard
 
       def embed_data(data = nil)
         if !data
-          r = /@huboard:(.*)/
+          r = Huboard.settings_pattern(true)
             match = r.match self.description
           return { } if match.nil?
 
@@ -166,9 +166,9 @@ class Huboard
         else
           _data = embed_data
           if _data.empty?
-            self.description = self.description.concat  "\r\n\r\n<!---\r\n@huboard:#{JSON.dump(data)}\r\n-->\r\n" 
+            self.description = self.description.concat  "\r\n\r\n<!---\r\n@hasboard:#{JSON.dump(data)}\r\n-->\r\n" 
           else
-            self.description = self.description.gsub /@huboard:.*/, "@huboard:#{JSON.dump(_data.merge(data))}"
+            self.description = self.description.gsub /@hasboard:.*/, "@hasboard:#{JSON.dump(_data.merge(data))}"
           end
         end
       end
