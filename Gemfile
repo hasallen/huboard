@@ -9,6 +9,7 @@ gem 'ghee'
 gem 'rack-cache'
 gem 'activesupport'
 gem 'sass'
+gem 'json', "1.7.7"
   gem 'bourbon'
 
 group :development do

@@ -10,6 +10,7 @@ class Huboard
 
   def self.columns
     return { 
+      'api' => 0,
       'development' => 1,
       'code - review' => 2,
       'stage - review' => 3}

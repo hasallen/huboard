@@ -15,13 +15,13 @@ class Huboard
     end
 
     def backlog_column
-       grouped = issues.group_by {|i| i["current_state"]["name"] }
-       first = column_labels.first 
-       issues =  (grouped["__nil__"] || []).concat(grouped[first.name]|| [])
-       return {
-         :index => first[:index],
-         :issues => issues.sort_by {|i| i.order }
-       }
+      grouped = issues.group_by {|i| i["current_state"]["name"] }
+      first = column_labels.first 
+      issues =  (grouped["__nil__"] || []).concat(grouped[first.name]|| [])
+      return {
+        :index => first[:index],
+        :issues => issues.sort_by {|i| i.order }
+      }
     end
 
     def board
